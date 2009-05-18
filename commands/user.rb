@@ -40,10 +40,10 @@ module Commands
 
     private
     def is_user(msg)
-      return true if msg.from.bare == @config['admin']
+      return true if msg.from.bare.to_s == @config['admin']
 
       begin
-        u = ::User.find(:first, :conditions => { :email => msg.from.bare, :active => "true" })
+        u = ::User.find(:first, :conditions => { :email => msg.from.bare.to_s, :active => "true" })
         return u
       rescue CouchFoo::DocumentNotFound => e
         return false
