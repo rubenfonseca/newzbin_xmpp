@@ -9,8 +9,8 @@ require 'logger'
 require 'yaml'
 
 current_thread = Thread.current
-logger = Logger.new(STDERR)
 config = YAML.load_file(File.join(File.dirname(__FILE__), 'config.yml'))
+logger = Logger.new(File.join(File.dirname(__FILE__), config['log']))
 
 Jabber.debug = true if ENV['DEBUG']
 jid = Jabber::JID.new(config['jid'])

@@ -1,5 +1,6 @@
 jid: user@host/resource
 password: secret
 admin: admin_user@host
+log: log
 newzbin_username: username
 newzbin_password: password

@@ -10,5 +10,5 @@ class User < CouchFoo::Base
 end
 
 CouchFoo::Base.set_database(:host => 'http://localhost:5984', :database => 'newzbin')
-CouchFoo::Base.logger = Logger.new(STDERR)
+CouchFoo::Base.logger = Logger.new(File.join(File.dirname(__FILE__), 'couchfoo.log'))
 
