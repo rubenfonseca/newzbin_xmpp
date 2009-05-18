@@ -21,16 +21,18 @@ client.send(Jabber::Presence.new.set_status("newzbin robot"))
 
 processors = [Commands::Admin.new(config, logger), Commands::User.new(config, logger)]
 client.add_message_callback do |m|
-  if m.type != :error && !m.body.empty?
+  if m.type != :error
     logger.info "<< #{m.from.to_s}: '#{m.body}'"
     
-    begin
-      unless processors.any? { |p| p.process(client, m) }
-        # couldn't process the message
-        logger.info "[unknown message] couldn't process msg from #{m.from.to_s}: #{m.body}"
+    if m.body != ""
+      begin
+        unless processors.any? { |p| p.process(client, m) }
+          # couldn't process the message
+          logger.info "[unknown message] couldn't process msg from #{m.from.to_s}: #{m.body}"
+        end
+      rescue => e
+        logger.warn e
       end
-    rescue => e
-      logger.warn e
     end
   else
     logger.warn [m.type.to_s, m.body].join(': ')
