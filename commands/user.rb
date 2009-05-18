@@ -76,7 +76,6 @@ module Commands
       b.add_namespace('http://www.w3.org/1999/xhtml')
 
       template = %q{
-        <ol>
           <% nzbs.each do |nzb| %>
             <li>
               <%= h nzb.title %>
@@ -85,7 +84,6 @@ module Commands
               [<a href="http://www.newzbin.com/browse/post/<%= nzb.id %>">link</a>]
             </li>
           <% end %>
-        </ol>
       }
       html = ERB.new(template).result(binding)
       t = REXML::Text.new(html, false, nil, true, nil, %r/.^/)
