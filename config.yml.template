@@ -1,0 +1,5 @@
+jid: user@host/resource
+password: secret
+admin: admin_user@host
+newzbin_username: username
+newzbin_password: password
