@@ -24,7 +24,7 @@ client.add_message_callback do |m|
   if m.type != :error
     logger.info "<< #{m.from.to_s}: '#{m.body}'"
     
-    if m.body != ""
+    unless m.body.chomp.empty?
       begin
         unless processors.any? { |p| p.process(client, m) }
           # couldn't process the message
