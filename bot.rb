@@ -52,6 +52,7 @@ roster = Jabber::Roster::Helper.new(client)
 roster.add_subscription_request_callback do |item, pres|
   logger.info "[roster] accepting authorization request from #{pres.from.to_s}"
   roster.accept_subscription(pres.from)
+  item.subscribe
 
   User.create(:email => pres.from.to_s, :active => "false", :created_at => Time.now)
 
