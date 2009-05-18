@@ -77,12 +77,12 @@ module Commands
 
       template = %q{
           <% nzbs.each do |nzb| %>
-            <li>
+            <p>
               <%= h nzb.title %>
               [<%= h nzb.category %>]
               [<%= h nzb.size_in_bytes.to_i.to_human %>]
               [<a href="http://www.newzbin.com/browse/post/<%= nzb.id %>">link</a>]
-            </li>
+            </p>
           <% end %>
       }
       html = ERB.new(template).result(binding)
