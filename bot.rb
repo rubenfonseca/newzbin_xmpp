@@ -1,3 +1,5 @@
+$:.unshift File.dirname(__FILE__)
+
 require 'rubygems'
 require 'users'
 require 'xmpp4r'
@@ -8,7 +10,7 @@ require 'yaml'
 
 current_thread = Thread.current
 logger = Logger.new(STDERR)
-config = YAML.load_file('config.yml')
+config = YAML.load_file(File.join(File.dirname(__FILE__), 'config.yml'))
 
 Jabber.debug = true if ENV['DEBUG']
 jid = Jabber::JID.new(config['jid'])
