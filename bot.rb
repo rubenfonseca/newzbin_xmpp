@@ -54,7 +54,8 @@ roster.add_subscription_request_callback do |item, pres|
   roster.accept_subscription(pres.from)
   item.subscribe
 
-  unless ::User.find(:first, :conditions => { :email => pres.from.bare.to_s })
+  u = ::User.find(:first, :conditions => { :email => pres.from.bare.to_s }) rescue nil
+  unless u
     User.create(:email => pres.from.to_s, :active => "false", :created_at => Time.now)
 
     text = "Please authorize new user #{pres.from.to_s}"
