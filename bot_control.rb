@@ -1,4 +1,4 @@
 require 'rubygems'
 require 'daemons'
 
-Daemons.run('bot.rb')
+Daemons.run(File.join(File.dirname(__FILE__), 'bot.rb'))
