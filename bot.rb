@@ -21,7 +21,7 @@ client.send(Jabber::Presence.new.set_status("newzbin robot"))
 
 processors = [Commands::Admin.new(config, logger), Commands::User.new(config, logger)]
 client.add_message_callback do |m|
-  if m.type != :error
+  if m.type != :error && !m.body.empty?
     logger.info "<< #{m.from.to_s}: '#{m.body}'"
     
     begin
