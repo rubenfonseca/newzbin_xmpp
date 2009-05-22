@@ -1,0 +1,38 @@
+h1. newzbin_xmpp
+
+newzbin_xmpp is a XMPP agent that allows registered users to search on the
+"newzbin":http://www.newzbin.com website.
+
+h2. features
+
+* admin controllable ACL-like system (only the users you approve can use the system) 
+* everything you say to the agent, it will search on newzbin
+
+h2. requirements
+
+* Ruby (only tested with 1.8)
+* XMPP4R (http://home.gna.org/xmpp4r/)
+* CouchDB database (http://couchdb.apache.org/)
+* daemons gem
+
+h2. notes
+
+if some of the code doesn't make any sense, then it's because it doesn't. this was just
+a test of the XMPP4R gem, and I decided to build something useful to me and my friends.
+
+it's probably incomplete and buggy, but it's in a state that works for me
+
+h2. instructions
+
+* checkout the code from github
+* setup a couchdb database
+* copy @config.yml.template@ to @config.yml@ and edit the values accordingly
+* execute @bot.rb@ directly or @bot_control.rb@ if you want daemon behavior
+
+since it's buggy, it's recommended you run @bot_control.rb@ under some kind of process
+monitor like @monit@ or @god@
+
+h2. final thoughts
+
+feel free to comment on the code or send me suggestions on how to improve it. any feedback
+will be appreciated. remember, this is my first attempt with XMPP4R
